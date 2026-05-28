@@ -308,10 +308,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 0 0
         <div class="hero-content">
           <h1 class="hero-title">Nights People<br><span>Remember</span></h1>
           <p class="hero-sub">High-energy rock, country, and alt-rock covers built for packed bars, festivals, and unforgettable nights across the Pacific Northwest.</p>
-          <div class="hero-ctas">
-            <button class="btn btn-gold btn-xl" onclick="showPage('book')">Book Ira &amp; the Half Moon</button>
-            <button class="btn btn-outline" onclick="showPage('shows')">See Upcoming Shows</button>
-            <button class="btn btn-red btn-sm" onclick="showPage('request')">Request a Song — $10</button>
+          <div class="hero-ctas" style="flex-wrap:wrap;gap:12px">
+            <div style="display:flex;gap:12px;width:100%">
+              <button class="btn btn-red" onclick="showPage('request')">Request a Song — $10</button>
+              <button class="btn btn-gold" onclick="showPage('book')">Book Ira &amp; the Half Moon</button>
+            </div>
+            <div style="width:100%">
+              <button class="btn btn-outline btn-sm" onclick="showPage('shows')">See Upcoming Shows</button>
+            </div>
           </div>
           <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll to explore</span></div>
         </div>
