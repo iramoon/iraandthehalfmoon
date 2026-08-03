@@ -1,1 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="IR8GfJoBXQSUb7WwzCLGvgPQ-8PbUNtY0_UtMk85ROk">
+<title>Ira & the Half Moon — Live Music | Pacific Northwest</title>
+<meta name="description" content="High-energy rock, country, and alt-rock covers built for packed bars, festivals, and unforgettable nights across the Pacific Northwest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08080a;--bg2:#0f0f13;--bg3:#16161c;--bg4:#1e1e26;
+  --border:rgba(255,255,255,0.07);
+  --gold:#c9a84c;--gold2:#e8c96a;--gold-dim:#6b5420;--gold-glow:rgba(201,168,76,0.15);
+  --red:#8b1a1a;--red2:#a02020;
+  --text:#ddd9d0;--muted:#9a9490;--white:#f8f4ec;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --max:1140px;--nav-h:72px;
+  --ease:cubic-bezier(0.4,0,0.2,1);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;font-family:var(--font-body);border:none}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.1}
+section{display:none}
+section.active{display:block}
 
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(8,8,10,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.12);z-index:200;display:flex;align-items:center}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav-logo{display:flex;align-items:center;cursor:pointer;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);padding:7px 14px;border-radius:4px;transition:color 0.2s;letter-spacing:0.03em;white-space:nowrap}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-book{background:var(--gold);color:#08080a;font-size:13px;font-weight:600;padding:10px 22px;border-radius:4px;letter-spacing:0.04em;transition:all 0.2s;white-space:nowrap;cursor:pointer;border:none}
+.nav-book:hover{background:var(--gold2);transform:translateY(-1px)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:8px;background:none;border:none;cursor:pointer}
+.nav-burger span{display:block;width:22px;height:1.5px;background:var(--text)}
+.nav-mobile{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(8,8,10,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:24px 32px;z-index:199;flex-direction:column;gap:2px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-size:15px;font-weight:500;color:var(--muted);padding:14px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.nav-mobile a:last-of-type{border-bottom:none}
+.nav-mobile a:hover{color:var(--white)}
+.nav-mobile-cta{margin-top:20px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-body);font-size:14px;font-weight:600;letter-spacing:0.04em;padding:14px 28px;border-radius:4px;transition:all 0.2s;cursor:pointer;border:none;white-space:nowrap}
+.btn-gold{background:var(--gold);color:#08080a;box-shadow:0 0 30px rgba(201,168,76,0.2)}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 6px 30px rgba(201,168,76,0.4)}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-1px)}
+.btn-ghost{background:rgba(255,255,255,0.05);color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{background:rgba(255,255,255,0.09)}
+.btn-red{background:var(--red);color:var(--white);box-shadow:0 0 20px rgba(139,26,26,0.3)}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px)}
+.btn-sm{font-size:12px;padding:10px 20px}
+.btn-full{width:100%;justify-content:center}
+.btn-xl{font-size:16px;padding:18px 38px}
+
+.page{padding-top:var(--nav-h);min-height:100vh}
+.container{max-width:var(--max);margin:0 auto;padding:0 32px}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;opacity:0.85}
+
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;padding-bottom:80px}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;display:block}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(8,8,10,0.05) 0%,rgba(8,8,10,0.0) 15%,rgba(8,8,10,0.2) 45%,rgba(8,8,10,0.82) 72%,rgba(8,8,10,0.97) 100%)}
+.hero-overlay2{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(8,8,10,0.55) 0%,rgba(8,8,10,0.05) 55%,rgba(8,8,10,0.0) 100%)}
+.stars-canvas{position:absolute;inset:0;pointer-events:none;z-index:2}
+.hero-content{position:relative;z-index:3;max-width:680px;padding-top:320px}
+.hero-title{font-size:clamp(48px,7vw,92px);font-weight:900;color:var(--white);line-height:1.0;margin-bottom:22px;text-shadow:0 2px 40px rgba(0,0,0,0.9);letter-spacing:-0.02em}
+.hero-title span{color:var(--gold)}
+.hero-sub{font-size:clamp(15px,2vw,19px);color:rgba(248,244,236,0.75);max-width:520px;margin-bottom:38px;line-height:1.65}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:48px}
+
+.marquee-wrap{background:var(--gold);overflow:hidden;padding:14px 0;border-top:1px solid rgba(201,168,76,0.3);border-bottom:1px solid rgba(201,168,76,0.3)}
+.marquee-track{display:flex;white-space:nowrap;animation:marquee 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+.marquee-item{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#08080a;font-weight:500;padding:0 20px;white-space:nowrap}
+.marquee-item strong{font-weight:700;letter-spacing:0.18em}
+.marquee-dot{color:rgba(8,8,10,0.4);margin:0 12px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+.live-section{padding:100px 0;background:var(--bg)}
+.live-section-header{text-align:center;margin-bottom:60px}
+.live-section-header h2{font-size:clamp(32px,4vw,52px);color:var(--white);margin-bottom:24px}
+.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.live-cell{position:relative;overflow:hidden;background:var(--bg3);aspect-ratio:1/1;width:100%}
+.live-cell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform 0.6s}
+.live-cell:hover img{transform:scale(1.04)}
+.live-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,10,0.5) 0%,transparent 50%);opacity:0;transition:opacity 0.3s}
+.live-cell:hover::after{opacity:1}
+.live-cell-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.live-cell-placeholder span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);opacity:0.35}
+
+.venues-section{padding:100px 0;background:linear-gradient(180deg,var(--bg) 0%,#0d0a0a 50%,var(--bg) 100%);border-top:1px solid rgba(201,168,76,0.1);border-bottom:1px solid rgba(201,168,76,0.1);position:relative;overflow:hidden}
+.venues-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 50%,rgba(139,26,26,0.06) 0%,transparent 70%);pointer-events:none}
+.venues-header{text-align:center;margin-bottom:60px;position:relative}
+.venues-header h2{font-size:clamp(32px,4vw,52px);color:var(--white);margin-bottom:12px;letter-spacing:-0.01em}
+.venue-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.venue-card{background:rgba(18,14,14,0.8);border:1px solid rgba(201,168,76,0.12);border-radius:10px;padding:24px 20px;text-align:center;transition:all 0.3s var(--ease);position:relative;overflow:hidden;cursor:default}
+.venue-card::before{content:'';position:absolute;inset:0;border-radius:10px;background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,transparent 60%);opacity:0;transition:opacity 0.3s}
+.venue-card::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(to right,transparent,var(--red),transparent);opacity:0.4}
+.venue-card:hover{border-color:rgba(201,168,76,0.35);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.5),0 0 20px rgba(201,168,76,0.06)}
+.venue-card:hover::before{opacity:1}
+.venue-card-icon{font-size:16px;margin-bottom:10px;opacity:0.8}
+.venue-card-name{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.2}
+.venue-card-city{font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.venue-card-more{background:transparent;border:1px dashed rgba(201,168,76,0.2)}
+.venue-card-more .venue-card-name{color:var(--gold);font-style:italic;font-size:15px}
+
+.show-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.show-strip-inner{max-width:var(--max);margin:0 auto;padding:0 32px}
+.show-strip-header{display:flex;align-items:center;justify-content:space-between;padding:28px 0 22px;border-bottom:1px solid var(--border)}
+.show-card-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.show-card-mini{padding:22px 0;border-right:1px solid var(--border);padding-right:28px;margin-right:28px}
+.show-card-mini:last-child{border-right:none;margin-right:0}
+.show-date-badge{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase;margin-bottom:7px}
+.show-venue-name{font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--white);margin-bottom:5px}
+.show-meta-line{font-size:13px;color:var(--muted);margin-bottom:14px}
+
+.home-sections{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:56px 0 0}
+.home-section-card{padding:40px 36px;border-right:1px solid var(--border);cursor:pointer;transition:background 0.2s}
+.home-section-card:last-child{border-right:none}
+.home-section-card:hover{background:rgba(255,255,255,0.02)}
+.home-section-card h3{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--white);margin-bottom:12px}
+.home-section-card p{font-size:14px;color:var(--muted);line-height:1.65;margin-bottom:22px}
+
+.section-hero{padding:88px 0 64px;border-bottom:1px solid var(--border)}
+.section-hero h1{font-size:clamp(40px,5vw,64px);font-weight:900;color:var(--white);margin-bottom:14px}
+.section-hero p{font-size:18px;color:var(--muted);max-width:560px;line-height:1.65}
+
+.shows-list{padding:48px 0}
+.show-item{display:grid;grid-template-columns:100px 1fr auto;gap:28px;align-items:center;padding:28px 0;border-bottom:1px solid var(--border)}
+.show-item:first-child{border-top:1px solid var(--border)}
+.show-item-date{text-align:center}
+.show-item-month{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+.show-item-day{font-family:var(--font-display);font-size:40px;font-weight:900;color:var(--white);line-height:1}
+.show-item-dow{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+.show-item-venue{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--white);margin-bottom:6px}
+.show-item-details{font-size:13px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.show-item-actions{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.badge{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.2)}
+
+.request-layout{display:grid;grid-template-columns:1fr 380px;gap:64px;padding:64px 0}
+.request-form-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:40px}
+.request-sidebar-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px;margin-bottom:20px}
+.request-sidebar-block h4{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.request-sidebar-block ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.request-sidebar-block ul li{font-size:13px;color:var(--muted);padding-left:16px;position:relative;line-height:1.55}
+.request-sidebar-block ul li::before{content:'—';position:absolute;left:0;color:var(--gold-dim)}
+
+.form-group{margin-bottom:22px}
+.form-label{display:block;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.form-input,.form-select,.form-textarea{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:13px 16px;font-family:var(--font-body);font-size:15px;color:var(--text);transition:border-color 0.2s;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.08)}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted);opacity:0.45}
+.form-select option{background:var(--bg3)}
+.form-textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-hint{font-size:12px;color:var(--muted);margin-top:6px;opacity:0.65}
+.price-display{display:flex;align-items:center;justify-content:space-between;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:28px 0}
+.price-amount{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--gold)}
+
+.band-bio-section{padding:64px 0 48px;border-bottom:1px solid var(--border)}
+.band-bio-section p{font-size:17px;color:var(--text);max-width:700px;line-height:1.8;opacity:0.82;margin-bottom:16px}
+.members-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:48px 0}
+.member-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.25s}
+.member-card:hover{border-color:rgba(201,168,76,0.3);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
+.member-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--bg3);position:relative}
+.member-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.5s}
+.member-card:hover .member-photo img{transform:scale(1.04)}
+.member-info{padding:20px}
+.member-name{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--white);margin-bottom:3px}
+.member-role{font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.member-bio{font-size:13px;color:var(--muted);line-height:1.65}
+
+.book-layout{display:grid;grid-template-columns:1fr 440px;gap:64px;padding:64px 0}
+.book-block{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:28px;margin-bottom:20px}
+.book-block h3{font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.book-block ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.book-block ul li{font-size:14px;color:var(--muted);padding-left:18px;position:relative;line-height:1.5}
+.book-block ul li::before{content:'→';position:absolute;left:0;color:var(--gold-dim);font-size:12px}
+
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:48px 0}
+.media-photo{aspect-ratio:4/3;background:var(--bg3);border:1px solid var(--border);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:border-color 0.2s}
+.media-photo:hover{border-color:rgba(201,168,76,0.3)}
+.media-photo-placeholder{font-size:11px;font-family:var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);opacity:0.35;text-align:center;padding:12px}
+.media-video{aspect-ratio:16/9;background:var(--bg3);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.play-btn{width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;color:var(--gold)}
+.epk-download{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:32px;margin-bottom:32px}
+.download-items{display:flex;flex-direction:column;gap:8px;margin:20px 0}
+.download-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--text)}
+.download-item span{color:var(--muted);font-size:12px}
+
+.contact-layout{display:grid;grid-template-columns:1fr 360px;gap:64px;padding:64px 0}
+.contact-info-item{display:flex;align-items:flex-start;gap:16px;padding:22px 0;border-bottom:1px solid var(--border)}
+.contact-info-item:first-child{border-top:1px solid var(--border)}
+.contact-icon{width:38px;height:38px;border-radius:4px;background:var(--gold-glow);border:1px solid rgba(201,168,76,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold)}
+.contact-info-label{font-size:11px;font-family:var(--font-mono);letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.contact-info-value{font-size:15px;color:var(--text)}
+.social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.social-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;font-size:13px;color:var(--muted);transition:all 0.2s;cursor:pointer}
+.social-link:hover{border-color:var(--gold);color:var(--gold)}
+
+.notice{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:6px;padding:18px 22px;font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:32px}
+.notice strong{color:var(--gold)}
+.success-box{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2);border-radius:8px;padding:56px;text-align:center;display:none}
+.success-box.visible{display:block}
+.success-icon{width:60px;height:60px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:var(--gold);font-size:26px}
+.success-box h3{font-family:var(--font-display);font-size:28px;color:var(--white);margin-bottom:12px}
+.success-box p{font-size:15px;color:var(--muted);max-width:380px;margin:0 auto 28px;line-height:1.65}
+
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 0 0}
+.footer-inner{max-width:var(--max);margin:0 auto;padding:0 32px 48px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.65;max-width:240px;margin-top:14px}
+.footer-links h4{font-family:var(--font-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links ul li a{font-size:14px;color:var(--muted);transition:color 0.2s}
+.footer-links ul li a:hover{color:var(--text)}
+.footer-bottom{max-width:var(--max);margin:0 auto;padding:20px 32px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:var(--muted)}
+
+@media(max-width:900px){
+  .nav-links,.nav-book{display:none}
+  .nav-burger{display:flex}
+  .home-sections{grid-template-columns:1fr}
+  .home-section-card{border-right:none;border-bottom:1px solid var(--border)}
+  .home-section-card:last-child{border-bottom:none}
+  .show-item{grid-template-columns:80px 1fr;grid-template-rows:auto auto}
+  .show-item-actions{grid-column:1/-1;flex-direction:row;flex-wrap:wrap}
+  .request-layout,.book-layout,.contact-layout{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .form-row{grid-template-columns:1fr}
+  .members-grid{grid-template-columns:repeat(2,1fr)}
+  .venue-cards{grid-template-columns:repeat(2,1fr)}
+  .live-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .container{padding:0 20px}
+  .members-grid{grid-template-columns:1fr 1fr}
+  .media-grid{grid-template-columns:1fr 1fr}
+  .footer-inner{grid-template-columns:1fr}
+  .hero-title{white-space:normal}
+  .hero-ctas{flex-direction:column}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .venue-cards{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')"><img src="images/img01.jpg" alt="Ira and the Half Moon" style="height:46px;width:auto;"></div>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home');return false;" id="nav-home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('shows');return false;" id="nav-shows">Shows</a></li>
+      <li><a href="#" onclick="showPage('request');return false;" id="nav-request">Request a Song</a></li>
+      <li><a href="#" onclick="showPage('band');return false;" id="nav-band">Meet the Band</a></li>
+      <li><a href="#" onclick="showPage('media');return false;" id="nav-media">Media</a></li>
+      <li><a href="#" onclick="showPage('merch');return false;" id="nav-merch">Store</a></li>
+    </ul>
+    <button class="nav-book" onclick="showPage('book')">Book Us</button>
+    <button class="nav-burger" onclick="toggleMobile()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="mobile-nav">
+  <a href="#" onclick="showPage('home');closeMobile();return false;">Home</a>
+  <a href="#" onclick="showPage('shows');closeMobile();return false;">Shows</a>
+  <a href="#" onclick="showPage('request');closeMobile();return false;">Request a Song</a>
+  <a href="#" onclick="showPage('band');closeMobile();return false;">Meet the Band</a>
+  <a href="#" onclick="showPage('book');closeMobile();return false;">Book Us</a>
+  <a href="#" onclick="showPage('media');closeMobile();return false;">Media / EPK</a>
+  <a href="#" onclick="showPage('merch');closeMobile();return false;">Store</a>
+  <a href="#" onclick="showPage('contact');closeMobile();return false;">Contact</a>
+  <div class="nav-mobile-cta"><button class="btn btn-gold btn-full" onclick="showPage('book');closeMobile()" style="margin-top:8px">Book Us</button></div>
+</div>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <div style="padding-top:var(--nav-h)">
+    <div class="hero">
+      <img class="hero-img" src="images/img02.jpg" alt="Ira and the Half Moon">
+      <div class="hero-overlay"></div>
+      <div class="hero-overlay2"></div>
+      <canvas class="stars-canvas" id="stars-canvas"></canvas>
+      <div class="container" style="position:relative;z-index:3;width:100%">
+        <div class="hero-content">
+          <h1 class="hero-title">Nights People<br><span>Remember</span></h1>
+          <p class="hero-sub">High-energy rock, country, and alt-rock covers built for packed bars, festivals, and unforgettable nights across the Pacific Northwest.</p>
+          <div class="hero-ctas">
+            <div style="display:flex;gap:12px;width:100%">
+              <button class="btn btn-red" onclick="showPage('request')">Request a Song — $10</button>
+              <button class="btn btn-gold" onclick="showPage('book')">Book Ira &amp; the Half Moon</button>
+            </div>
+            <div style="width:100%">
+              <button class="btn btn-outline btn-sm" onclick="showPage('shows')">See Upcoming Shows</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="marquee-wrap"><div class="marquee-track" id="marquee-track"></div></div>
+
+    <div class="live-section">
+      <div class="container">
+        <div class="live-section-header">
+          <div class="section-label">The Live Experience</div>
+          <h2>People Show Up.<br>People Stay.</h2>
+          <blockquote style="max-width:680px;margin:0 auto;padding:28px 36px;background:rgba(201,168,76,0.04);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;text-align:left;">
+            <p style="font-size:17px;color:var(--text);line-height:1.8;font-style:italic;opacity:0.9;margin-bottom:14px">"What stood out wasn't just how good they sounded. It was how connected they were to the crowd. They somehow turned a room full of strangers into a room full of people having the same memory at the same time."</p>
+            <cite style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-style:normal">— Sarah K., Portland</cite>
+          </blockquote>
+        </div>
+        <div class="live-grid">
+          <div class="live-cell" style="background-image:url('images/img03.jpg');background-size:102%;background-position:center center;background-repeat:no-repeat;"></div>
+          <div class="live-cell"><img src="images/img04.png" alt="Band promo photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"></div>
+          <div class="live-cell"><img src="images/img05.png" alt="Band live performance" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
+          <div class="live-cell"><img src="images/img06.jpg" alt="Full band" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
+          <div class="live-cell"><img src="images/img07.jpg" alt="Band banner" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
+          <div class="live-cell"><img src="images/img08.jpg" alt="Performing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venues-section">
+      <div class="container">
+        <div class="venues-header">
+          <div class="section-label" style="margin-bottom:14px">Stages We've Lit Up</div>
+          <h2>Where the Room<br>Came Alive</h2>
+          <blockquote style="max-width:620px;margin:0 auto;padding:0 20px;text-align:center;">
+            <p style="font-size:16px;color:var(--text);line-height:1.8;font-style:italic;opacity:0.85;margin-bottom:12px">"My husband and I only planned to stay for one set. Three hours later, we were still there. The music was great, but the energy and connection they create is what keeps people around."</p>
+            <cite style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-style:normal">— Michelle R., Camas</cite>
+          </blockquote>
+        </div>
+        <div class="venue-cards">
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">Billy Blues</div><div class="venue-card-city">Vancouver, WA</div></div>
+          <div class="venue-card"><div class="venue-card-icon">✦</div><div class="venue-card-name">Headliners</div><div class="venue-card-city">Lake Oswego, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">Ponderosa</div><div class="venue-card-city">Portland, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">✦</div><div class="venue-card-name">Cascade Bar &amp; Grill</div><div class="venue-card-city">Vancouver, WA</div></div>
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">A Beer at a Time</div><div class="venue-card-city">Camas, WA</div></div>
+          <div class="venue-card"><div class="venue-card-icon">✦</div><div class="venue-card-name">Wild Hare Saloon</div><div class="venue-card-city">Oregon City, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">Trails End Saloon</div><div class="venue-card-city">Oregon City, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">✦</div><div class="venue-card-name">Corner 14</div><div class="venue-card-city">Oregon City, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">M&amp;M Lounge</div><div class="venue-card-city">Gresham, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">✦</div><div class="venue-card-name">Ria's Bar</div><div class="venue-card-city">Sandy, OR</div></div>
+          <div class="venue-card"><div class="venue-card-icon">🌙</div><div class="venue-card-name">Falls View Tavern</div><div class="venue-card-city">Oregon City, OR</div></div>
+          <div class="venue-card venue-card-more"><div class="venue-card-icon">✦</div><div class="venue-card-name">And many more...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:100px 0;background:var(--bg)">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:64px">
+          <div class="section-label" style="margin-bottom:14px">For Venue Owners</div>
+          <h2 style="font-size:clamp(32px,4vw,56px);color:var(--white);margin-bottom:20px;line-height:1.1">More Than Music.<br><span style="color:var(--gold)">A Better Night for Your Customers.</span></h2>
+          <p style="font-size:18px;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.7">We show up prepared, keep rooms engaged, and help create the kind of nights people talk about on the drive home.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:48px">
+          <div style="background:rgba(14,10,10,0.8);border:1px solid rgba(201,168,76,0.15);border-radius:10px;overflow:hidden;transition:all 0.25s;position:relative" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+            <div style="width:100%;height:120px;overflow:hidden"><img src="images/img09.jpg" alt="Soundboard" style="width:100%;height:100%;object-fit:cover;"></div>
+            <div style="padding:24px"><h4 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px">Professional Sound, Zero Headaches</h4><p style="font-size:14px;color:var(--muted);line-height:1.65">We bring our own production, manage our mix, and show up ready to play.</p></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),transparent)"></div>
+          </div>
+          <div style="background:rgba(14,10,10,0.8);border:1px solid rgba(201,168,76,0.15);border-radius:10px;overflow:hidden;transition:all 0.25s;position:relative" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+            <div style="width:100%;height:120px;overflow:hidden"><img src="images/img10.jpg" alt="Packed crowd" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;"></div>
+            <div style="padding:24px"><h4 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px">We Help Fill the Room</h4><p style="font-size:14px;color:var(--muted);line-height:1.65">Every show is promoted across our social channels before we ever step on stage.</p></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),transparent)"></div>
+          </div>
+          <div style="background:rgba(14,10,10,0.8);border:1px solid rgba(201,168,76,0.15);border-radius:10px;overflow:hidden;transition:all 0.25s;position:relative" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+            <div style="width:100%;height:120px;overflow:hidden"><img src="images/img11.jpg" alt="Cassette tape" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+            <div style="padding:24px"><h4 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px">The Songs You Forgot You Loved</h4><p style="font-size:14px;color:var(--muted);line-height:1.65">Familiar songs that spark memories and singalongs.</p></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),transparent)"></div>
+          </div>
+          <div style="background:rgba(14,10,10,0.8);border:1px solid rgba(201,168,76,0.15);border-radius:10px;overflow:hidden;transition:all 0.25s;position:relative" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='rgba(201,168,76,0.15)';this.style.transform='translateY(0)'">
+            <div style="width:100%;height:120px;overflow:hidden"><img src="images/img12.jpg" alt="Bar crowd" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;"></div>
+            <div style="padding:24px"><h4 style="font-family:var(--font-display);font-size:19px;font-weight:700;color:var(--white);margin-bottom:10px">Nights Built for Your Crowd</h4><p style="font-size:14px;color:var(--muted);line-height:1.65">Every show shaped by the people in the room.</p></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--red),transparent)"></div>
+          </div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(201,168,76,0.06) 0%,rgba(139,26,26,0.06) 100%);border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:40px 48px;margin-bottom:48px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:24px;left:36px;font-size:80px;font-family:Georgia,serif;color:var(--gold);opacity:0.12;line-height:1">"</div>
+          <p style="font-size:18px;color:var(--white);line-height:1.8;font-style:italic;margin-bottom:20px;position:relative;padding-left:16px">"You can tell within the first few songs whether a band has the room. Ira &amp; the Half Moon had people engaged from the start and somehow kept building energy all night. We haven't stopped talking about that show."</p>
+          <div style="display:flex;align-items:center;gap:14px;padding-left:16px">
+            <div style="width:32px;height:1px;background:var(--gold);opacity:0.5"></div>
+            <cite style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-style:normal">Dave R., Vancouver — Venue Owner</cite>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <button class="btn btn-gold btn-xl" onclick="showPage('book')" style="box-shadow:0 0 40px rgba(201,168,76,0.25)">Check Availability →</button>
+          <p style="font-size:13px;color:var(--muted);margin-top:14px;font-style:italic">We respond to all booking inquiries within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="show-strip">
+      <div class="show-strip-inner">
+        <div class="show-strip-header">
+          <div class="section-label" style="margin-bottom:0">Upcoming Shows</div>
+          <button class="btn btn-outline btn-sm" onclick="showPage('shows')">See All Shows →</button>
+        </div>
+        <div class="show-card-row" id="home-shows"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="home-sections">
+        <div class="home-section-card" onclick="showPage('request')">
+          <div class="section-label">Fan Feature</div>
+          <h3>Request a Song</h3>
+          <p>What song takes you back? Pick from our live catalog and we'll do our best to work it into the show. $10 per request.</p>
+          <button class="btn btn-red btn-sm">Browse the Catalog →</button>
+        </div>
+        <div class="home-section-card" onclick="showPage('book')">
+          <div class="section-label">For Venues &amp; Events</div>
+          <h3>Book the Band</h3>
+          <p>Bars, festivals, private parties, corporate events, and community shows across the Pacific Northwest.</p>
+          <button class="btn btn-outline btn-sm">Get in Touch →</button>
+        </div>
+        <div class="home-section-card" onclick="showPage('band')">
+          <div class="section-label">The People</div>
+          <h3>Meet the Band</h3>
+          <p>A live band from the Pacific Northwest built around songs people know, love, and forgot they still remember every word to.</p>
+          <button class="btn btn-outline btn-sm">Meet the Band →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWS -->
+<section id="shows">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Live Dates</div><h1>Upcoming Shows</h1><p>Find us live across the Pacific Northwest. Click "Request a Song" on any show to put in your request before the night.</p></div>
+    <div class="shows-list" id="shows-list"></div>
+    <div class="notice"><strong>Want us at your venue?</strong> We're available for booking year-round. <a href="#" onclick="showPage('book');return false;" style="color:var(--gold)">Fill out our booking form →</a></div>
+  </div></div>
+</section>
+
+<!-- REQUEST -->
+<section id="request">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Fan Requests</div><h1>Request a Song</h1><p>What song takes you back? Pick from our live catalog and we'll do our best to work it into the show.</p></div>
+    <div class="request-layout">
+      <div>
+        <div id="request-form-container">
+          <p style="font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:32px">Requests are $10 per song and help support the band, the gear, the rehearsal space, and the general financial disaster known as live music.</p>
+          <div class="request-form-wrap">
+            <div class="form-group"><label class="form-label">Choose a Show *</label><select class="form-select" id="req-show"><option value="">Select an upcoming show…</option></select></div>
+            <div class="form-group"><label class="form-label">Song Request *</label>
+              <select class="form-select" id="req-song"><option value="">Select a song…</option>
+                <optgroup label="── Rock / Alt Rock" id="cat-rock"></optgroup>
+                <optgroup label="── Country / Southern Rock" id="cat-country"></optgroup>
+                <optgroup label="── Crowd Favorites" id="cat-crowd"></optgroup>
+                <optgroup label="── Slower / Emotional" id="cat-slow"></optgroup>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Your Name *</label><input type="text" class="form-input" id="req-name" placeholder="First name is fine"></div>
+              <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="req-email" placeholder="For your confirmation"></div>
+            </div>
+            <div class="form-group"><label class="form-label">What does this song mean to you? <span style="color:var(--muted);font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label><textarea class="form-textarea" id="req-message" placeholder="Celebrating something? A dedication? A memory tied to this song? Tell us." style="min-height:80px"></textarea></div>
+            <div class="price-display">
+              <div><div style="font-size:14px;color:var(--muted)">Request fee</div><div style="font-size:12px;color:var(--muted);margin-top:2px">Paid securely via Stripe</div></div>
+              <div class="price-amount">$10</div>
+            </div>
+            <button class="btn btn-gold btn-full" style="font-size:15px;padding:16px" onclick="submitRequest()">Continue to Payment →</button>
+            <p class="form-hint" style="text-align:center;margin-top:12px">You'll be redirected to Stripe Checkout. Safe, secure, one-click.</p>
+          </div>
+        </div>
+        <div class="success-box" id="request-success"><div class="success-icon">✓</div><h3>Request Received!</h3><p>Your song request is in. We'll do our best to work it into the show.</p><button class="btn btn-outline" onclick="resetRequest()">Submit Another Request</button></div>
+      </div>
+      <div>
+        <div class="request-sidebar-block"><h4>How It Works</h4><ul><li>Choose your show and pick a song from our live catalog</li><li>Leave an optional note or memory tied to the song</li><li>Pay $10 securely via Stripe</li><li>We'll do our best to work your song into the set</li></ul></div>
+        <div class="request-sidebar-block"><h4>A Few Things to Know</h4><ul><li>Requests are best-effort — we can't guarantee exact timing</li><li>Duplicate, unavailable, or inappropriate requests may be declined and refunded</li><li>One song per $10 transaction — submit again for more</li><li>Songs must be from our approved live catalog</li></ul></div>
+        <div class="request-sidebar-block"><h4>Want a Private Show?</h4><p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6">For private events, weddings, or corporate bookings, use our booking form.</p><button class="btn btn-outline btn-full btn-sm" onclick="showPage('book')">Book the Band →</button></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- MEET THE BAND -->
+<section id="band">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">The People</div><h1>Meet the Band</h1></div>
+    <div class="band-bio-section">
+      <p>Ira &amp; the Half Moon came together in the winter of 2025 when Brandon Ard and Tim Putnam spun up a new project with a simple idea: build a live show around songs that actually mean something. Not the same cover-band checklist, but songs people forgot they loved — the kind tied to old car rides, heartbreaks, second chances, and voices they forgot they still knew by heart.</p>
+      <p>The project also created the right opportunity to bring Maddy into the band, because Brandon believed she had a voice, presence, and level of confidence that would resonate with audiences.</p>
+      <p>The band blends soulful rock, alt-country edge, acoustic grunge, and folk-blues into a set that feels familiar without feeling predictable. Based in the Pacific Northwest, Ira &amp; the Half Moon brings a polished, high-energy show to bars, breweries, private events, corporate gatherings, and festivals — with strong vocals, full-band dynamics, crowd interaction, and a song list built to keep people engaged instead of checking their phones like bored raccoons.</p>
+      <p>It is a more ambitious approach to live music, and that has made it more rewarding for the band and the people in the room. Ira &amp; the Half Moon is built for nights people remember.</p>
+    </div>
+    <div class="members-grid">
+      <div class="member-card"><div class="member-photo"><img src="images/img13.jpg" alt="Brandon Ard" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div><div class="member-info"><div class="member-name">Brandon Ard</div><div class="member-role">Vocals</div><p class="member-bio">The voice and face of the operation. Brandon brings the energy, holds the stage, and somehow keeps the train moving full steam — which is more impressive than it sounds at 11pm on a Saturday.</p></div></div>
+      <div class="member-card"><div class="member-photo"><img src="images/img14.jpg" alt="Maddy Ard" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div><div class="member-info"><div class="member-name">Maddy Ard</div><div class="member-role">Vocals</div><p class="member-bio">Maddy's voice adds depth, range, and the kind of harmonies that make people stop their conversation mid-sentence to listen. The band's secret weapon, and not so secret anymore. Eat your heart out, Robert Plant.</p></div></div>
+      <div class="member-card"><div class="member-photo"><img src="images/img15.jpg" alt="Tom Mahoney" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div><div class="member-info"><div class="member-name">Tom "T-Bone" Mahoney</div><div class="member-role">Bass</div><p class="member-bio">Tom is the foundation — the low-end that keeps the whole thing locked and moving. He doesn't need a lot of words. The bass does the talking.</p></div></div>
+      <div class="member-card"><div class="member-photo"><img src="images/img16.jpg" alt="Dylan Thoma" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div><div class="member-info"><div class="member-name">Dylan Thoma</div><div class="member-role">Drums</div><p class="member-bio">Dylan keeps the band honest and on time — both musically and logistically. He's the one who decides whether something sounds ready, and he's usually right.</p></div></div>
+      <div class="member-card"><div class="member-photo"><img src="images/img17.jpg" alt="Tim Roland" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"></div><div class="member-info"><div class="member-name">Tim Roland</div><div class="member-role">Guitar</div><p class="member-bio">Tim handles the guitar work with enough range to cover clean country leads one song and full-drive rock the next. Reliable, tasteful, and the kind of player who makes everyone around him sound better.</p></div></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- BOOK -->
+<section id="book">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Inquiries</div><h1>Book the Band</h1><p>Looking for a live band that brings energy, familiarity, and a full-night sound? Fill out the form and we'll get back to you within 48 hours.</p></div>
+    <div class="book-layout">
+      <div>
+        <div id="book-form-container">
+          <div class="request-form-wrap">
+            <div class="form-row"><div class="form-group"><label class="form-label">Your Name *</label><input type="text" class="form-input" id="bk-name" placeholder="Full name"></div><div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="bk-email" placeholder="Best email to reach you"></div></div>
+            <div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" id="bk-phone" placeholder="Optional but helpful"></div>
+            <div class="form-row"><div class="form-group"><label class="form-label">Venue / Event Name *</label><input type="text" class="form-input" id="bk-venue" placeholder="Bar, venue, or event title"></div><div class="form-group"><label class="form-label">Event Type *</label><select class="form-select" id="bk-type"><option value="">Select…</option><option>Bar / Club Night</option><option>Festival</option><option>Private Party</option><option>Corporate Event</option><option>Wedding</option><option>Outdoor / Community Event</option><option>Fundraiser</option><option>Other</option></select></div></div>
+            <div class="form-row"><div class="form-group"><label class="form-label">Event Date *</label><input type="date" class="form-input" id="bk-date"></div><div class="form-group"><label class="form-label">Performance Time</label><input type="text" class="form-input" id="bk-time" placeholder="e.g. 8pm–11pm"></div></div>
+            <div class="form-group"><label class="form-label">Event Location / City</label><input type="text" class="form-input" id="bk-location" placeholder="City, state, or venue address"></div>
+            <div class="form-row"><div class="form-group"><label class="form-label">Estimated Audience</label><select class="form-select" id="bk-audience"><option value="">Select…</option><option>Under 50</option><option>50–150</option><option>150–300</option><option>300–500</option><option>500+</option></select></div><div class="form-group"><label class="form-label">Indoor or Outdoor</label><select class="form-select" id="bk-indoor"><option value="">Select…</option><option>Indoor</option><option>Outdoor</option><option>Both / Covered</option></select></div></div>
+            <div class="form-row"><div class="form-group"><label class="form-label">Sound Provided?</label><select class="form-select" id="bk-sound"><option value="">Select…</option><option>Yes, full PA</option><option>Partial / unsure</option><option>No — band brings sound</option></select></div><div class="form-group"><label class="form-label">Budget Range</label><select class="form-select" id="bk-budget"><option value="">Prefer not to say</option><option>Under $500</option><option>$500–$1,000</option><option>$1,000–$2,000</option><option>$2,000–$3,500</option><option>$3,500+</option></select></div></div>
+            <div class="form-group"><label class="form-label">Additional Details</label><textarea class="form-textarea" id="bk-message" placeholder="Set length, special requests, load-in info, anything else we should know."></textarea></div>
+            <button class="btn btn-gold btn-full" style="font-size:15px;padding:16px" onclick="submitBooking()">Send Booking Inquiry →</button>
+          </div>
+        </div>
+        <div class="success-box" id="book-success"><div class="success-icon">✓</div><h3>Inquiry Received</h3><p>We'll review your request and get back to you within 48 hours.</p><button class="btn btn-outline" onclick="resetBooking()">Submit Another Inquiry</button></div>
+      </div>
+      <div>
+        <div class="book-block"><h3>What We Provide</h3><ul><li>Full live band</li><li>Professional sound options</li><li>Flexible set lengths</li><li>Rock, country, alt-rock &amp; crowd favorites</li><li>Active social media promotion of your event</li><li>Promo materials on request</li></ul></div>
+        <div class="book-block"><h3>Best Fit For</h3><ul><li>Bars and clubs</li><li>Festivals</li><li>Private parties</li><li>Corporate events</li><li>Outdoor community events</li><li>Fundraisers</li><li>Summer concert series</li><li>Weddings</li></ul></div>
+        <div class="book-block"><h3>Contact</h3><p style="font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:14px">We respond to all inquiries within 48 hours.</p><a href="mailto:iraandthehalfmoon@gmail.com" style="color:var(--gold);font-size:14px;font-family:var(--font-mono)">iraandthehalfmoon@gmail.com</a></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- MEDIA -->
+<section id="media">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Press Kit</div><h1>Media &amp; EPK</h1><p>Photos, videos, bio, and assets for venues, promoters, and press.</p></div>
+    <div class="epk-download" style="margin-top:48px">
+      <h3 style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--white);margin-bottom:8px">Electronic Press Kit</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:20px;line-height:1.6">Download our full EPK package including high-res photos, band bio, sample setlist, and logo files.</p>
+      <div class="download-items">
+        <div class="download-item">📄 Band Bio (Press Ready)<span>PDF · 1 page</span></div>
+        <div class="download-item">🎵 Sample Setlist<span>See below ↓</span></div>
+        <div class="download-item" style="flex-direction:column;align-items:flex-start;gap:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;width:100%">
+              <span>🖼 Logo File</span>
+              <a href="images/img18.jpg" download="ira-halfmoon-logo.jpg" style="color:var(--gold);font-size:12px;text-decoration:underline;font-family:var(--font-mono)">Download</a>
+            </div>
+            <div style="background:var(--bg);border-radius:6px;padding:10px;text-align:center;width:100%">
+              <img src="images/img18.jpg" alt="Ira and the Half Moon Logo" style="max-width:160px;height:auto;display:inline-block;border-radius:4px;">
+            </div>
+          </div>
+        <div class="download-item">📸 Promo Photos (Hi-Res)<span>ZIP · ~30MB</span></div>
+      </div>
+      <button class="btn btn-gold" onclick="alert('Add your EPK download link here.')">Download Full EPK Package</button>
+    </div>
+
+    <div style="margin-bottom:48px">
+      <div class="section-label" style="margin-top:40px;margin-bottom:24px">Sample Setlist</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Rock / Alt Rock</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Shine – Collective Soul</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Everlong – Foo Fighters</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Sultans of Swing – Dire Straits</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>3AM – Matchbox Twenty</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Mr. Brightside – The Killers</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Sex on Fire – Kings of Leon</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Heart-Shaped Box – Nirvana</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Crazy on You – Heart</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Hard to Handle – The Black Crowes</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Rock and Roll – Led Zeppelin</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Learn to Fly – Foo Fighters</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Gold on the Ceiling – The Black Keys</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Sweet Child O' Mine – Guns N' Roses</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Crazy on You – Heart</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Country / Southern Rock</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Tennessee Whiskey – Chris Stapleton</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>White Horse – Chris Stapleton</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>The Thunder Rolls – Garth Brooks</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Neon Moon – Brooks &amp; Dunn</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Folsom Prison Blues – Johnny Cash</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Free Fallin' – Tom Petty</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Save a Horse – Big &amp; Rich</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Black Magic Woman – Santana</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Drinkin' Alone – Ty Myers</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Boot Scootin' Boogie – Brooks &amp; Dunn</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Crowd Favorites</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Long Train Runnin' – The Doobie Brothers</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Love Shack – The B-52's</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Hysteria – Def Leppard</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Purple Rain – Prince</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>The Best – Tina Turner</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Superstition – Stevie Wonder</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>867-5309/Jenny – Tommy Tutone</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Run to You – Bryan Adams</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Blue on Black – Five Finger Death Punch</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Midnight Rendezvous – The Babys</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Slide – Goo Goo Dolls</li>
+          </ul>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Slower / Emotional</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Iris – Goo Goo Dolls</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Dreams – Fleetwood Mac</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Wicked Game – Chris Isaak</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Think I'm in Love With You – Chris Stapleton</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Valerie – Mark Ronson ft. Amy Winehouse</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Into the Mystic – Van Morrison</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>While My Guitar Gently Weeps – Tom Petty</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Turn the Page – Metallica</li>
+            <li style="font-size:13px;color:var(--text);padding-left:14px;position:relative"><span style="position:absolute;left:0;color:var(--gold-dim)">—</span>Stop Draggin' My Heart Around – Stevie Nicks</li>
+          </ul>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:16px;font-style:italic;text-align:center">Full song catalog available on the Request a Song page. Set lengths and song selection tailored to your event.</p>
+    </div>
+
+    <div class="section-label" style="margin-top:48px">Promo Photos</div>
+    <div class="media-grid">
+      <div class="media-photo"><img src="images/img19.jpg" alt="Ira and the Half Moon promo photo" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+      <div class="media-photo"><img src="images/img20.jpg" alt="Ira and the Half Moon live on stage" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+      <div class="media-photo"><div class="media-photo-placeholder">Add promo photo</div></div>
+      <div class="media-photo"><div class="media-photo-placeholder">Add live photo</div></div>
+      <div class="media-photo"><div class="media-photo-placeholder">Add live photo</div></div>
+      <div class="media-photo"><div class="media-photo-placeholder">Add live photo</div></div>
+    </div>
+    <div class="section-label" style="margin-top:40px">Video</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:48px">
+      <div class="media-video"><div style="text-align:center"><div class="play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><p style="font-size:13px;color:var(--muted)">Add YouTube / Vimeo embed</p></div></div>
+      <div class="media-video"><div style="text-align:center"><div class="play-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div><p style="font-size:13px;color:var(--muted)">Add YouTube / Vimeo embed</p></div></div>
+    </div>
+    <div class="book-block" style="margin-bottom:60px">
+      <h3>Press &amp; Media Contact</h3>
+      <p style="font-size:14px;color:var(--muted);margin-bottom:12px">For press, interviews, or media inquiries:</p>
+      <a href="mailto:iraandthehalfmoon@gmail.com" style="color:var(--gold);font-family:var(--font-mono);font-size:14px">iraandthehalfmoon@gmail.com</a>
+      <div class="social-links" style="margin-top:20px">
+        <a class="social-link" href="https://www.instagram.com/irandthehalfmoon?igsh=MWUyeGQ0aWdqZWNqMA%3D%3D&utm_source=qr" target="_blank">Instagram</a>
+        <a class="social-link" href="https://www.facebook.com/profile.php?id=61588124896577" target="_blank">Facebook</a>
+        <a class="social-link" href="https://www.tiktok.com/@iraandthehalfmoonband?_r=1&_t=ZP-96jDKcBLE0V" target="_blank">TikTok</a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- STORE -->
+<section id="merch">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Official Store</div><h1>Gear Up</h1><p>Represent the Half Moon. Look good doing it.</p></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;padding:48px 0">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.25s" onmouseover="this.style.borderColor='rgba(201,168,76,0.35)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.07)';this.style.transform='translateY(0)'">
+        <div style="aspect-ratio:3/4;overflow:hidden;background:var(--bg3)">
+          <img src="images/img21.jpg" alt="Ira and the Half Moon T-Shirt" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+        </div>
+        <div style="padding:20px">
+          <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px">IRA Band T-Shirt</div>
+          <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Unisex · Sizes S–3XL</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+            <div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold)">$25</div>
+            <div style="font-size:12px;color:var(--muted)">+ shipping</div>
+          </div>
+          <button class="btn btn-gold btn-full" onclick="window.open('https://buy.stripe.com/3cIaEQ3wF7pl12jb6OaZi00','_blank')">Order Now — $25 →</button>
+          <p style="font-size:12px;color:var(--muted);margin-top:10px;text-align:center;opacity:0.7">Or grab one at our next show</p>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:28px;margin-bottom:60px">
+      <div class="section-label" style="margin-bottom:8px">More Coming Soon</div>
+      <p style="font-size:15px;color:var(--muted);line-height:1.65">Hats, stickers, and more gear on the way. Follow us on social or check back after shows.</p>
+    </div>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="page"><div class="container">
+    <div class="section-hero"><div class="section-label">Get in Touch</div><h1>Contact</h1><p>General inquiries, press questions, or just want to say hi. For booking, use the Book Us form.</p></div>
+    <div class="contact-layout">
+      <div>
+        <div id="contact-form-container">
+          <div class="request-form-wrap">
+            <div class="form-row"><div class="form-group"><label class="form-label">Name *</label><input type="text" class="form-input" id="ct-name" placeholder="Your name"></div><div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-input" id="ct-email" placeholder="your@email.com"></div></div>
+            <div class="form-group"><label class="form-label">Subject</label><input type="text" class="form-input" id="ct-subject" placeholder="What's on your mind?"></div>
+            <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" id="ct-message" placeholder="What would you like to say?" style="min-height:140px"></textarea></div>
+            <button class="btn btn-gold btn-full" style="font-size:15px;padding:16px" onclick="submitContact()">Send Message →</button>
+          </div>
+        </div>
+        <div class="success-box" id="contact-success"><div class="success-icon">✓</div><h3>Message Sent</h3><p>Thanks for reaching out. We'll get back to you soon.</p><button class="btn btn-outline" onclick="resetContact()">Send Another Message</button></div>
+      </div>
+      <div>
+        <div class="contact-info-item"><div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="contact-info-label">Email</div><div class="contact-info-value"><a href="mailto:iraandthehalfmoon@gmail.com">iraandthehalfmoon@gmail.com</a></div></div></div>
+        <div class="contact-info-item"><div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><div class="contact-info-label">Booking</div><div class="contact-info-value"><a href="#" onclick="showPage('book');return false;" style="color:var(--gold)">Use the booking form →</a></div></div></div>
+        <div class="contact-info-item"><div class="contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="contact-info-label">Response Time</div><div class="contact-info-value" style="color:var(--muted)">Usually within 48 hours</div></div></div>
+        <div style="margin-top:28px"><div class="section-label">Follow Along</div><div class="social-links"><a class="social-link" href="https://www.instagram.com/irandthehalfmoon?igsh=MWUyeGQ0aWdqZWNqMA%3D%3D&utm_source=qr" target="_blank">Instagram</a><a class="social-link" href="https://www.facebook.com/profile.php?id=61588124896577" target="_blank">Facebook</a><a class="social-link" href="https://www.tiktok.com/@iraandthehalfmoonband?_r=1&_t=ZP-96jDKcBLE0V" target="_blank">TikTok</a></div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="images/img01.jpg" alt="Ira and the Half Moon" style="height:50px;width:auto;"><p>A live band from the Pacific Northwest blending rock, country, and alt-rock into nights people actually remember.</p><div class="social-links" style="margin-top:18px"><a class="social-link" href="https://www.instagram.com/irandthehalfmoon?igsh=MWUyeGQ0aWdqZWNqMA%3D%3D&utm_source=qr" target="_blank">IG</a><a class="social-link" href="https://www.facebook.com/profile.php?id=61588124896577" target="_blank">FB</a><a class="social-link" href="https://www.tiktok.com/@iraandthehalfmoonband?_r=1&_t=ZP-96jDKcBLE0V" target="_blank">TT</a></div></div>
+    <div class="footer-links"><h4>Navigation</h4><ul><li><a href="#" onclick="showPage('shows');return false;">Shows</a></li><li><a href="#" onclick="showPage('request');return false;">Request a Song</a></li><li><a href="#" onclick="showPage('band');return false;">Meet the Band</a></li><li><a href="#" onclick="showPage('book');return false;">Book Us</a></li><li><a href="#" onclick="showPage('media');return false;">Media / EPK</a></li><li><a href="#" onclick="showPage('merch');return false;">Store</a></li><li><a href="#" onclick="showPage('contact');return false;">Contact</a></li></ul></div>
+    <div class="footer-links"><h4>Get Involved</h4><ul><li><a href="#" onclick="showPage('request');return false;">Request a Song — $10</a></li><li><a href="#" onclick="showPage('book');return false;">Book the Band</a></li><li><a href="mailto:iraandthehalfmoon@gmail.com">Email Us</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Ira and the Half Moon. Pacific Northwest.</p><p style="font-family:var(--font-mono);font-size:11px">All Rights Reserved</p></div>
+</footer>
+
+<script>
+const SHOWS=[
+  {id:'show-2',month:'JUN',day:'10',dow:'TUE',venue:'Ponderosa',city:'Portland, OR',time:'7–8 PM',age:'All Ages'},
+  {id:'show-3',month:'JUN',day:'20',dow:'FRI',venue:'M&M',city:'Gresham, OR',time:'8 PM–Midnight',age:'All Ages'},
+  {id:'show-4',month:'JUN',day:'27',dow:'FRI',venue:'Corner 14',city:'Oregon City, OR',time:'7–10 PM',age:'All Ages'},
+  {id:'show-5',month:'JUL',day:'4',dow:'FRI',venue:'Private Event',city:'Oregon City, OR',time:'',age:'Private'},
+  {id:'show-6',month:'JUL',day:'10',dow:'THU',venue:"Mountain Days (Ria's)",city:'Sandy, OR',time:'8–11 PM',age:'All Ages'},
+  {id:'show-7',month:'JUL',day:'11',dow:'FRI',venue:'Music Fair and Feast',city:'Sandy, OR',time:'7:30–9:30 PM',age:'All Ages'},
+  {id:'show-8',month:'JUL',day:'17',dow:'THU',venue:'Billy Blues',city:'Vancouver, WA',time:'9 PM–Midnight',age:'All Ages'},
+  {id:'show-9',month:'JUL',day:'18',dow:'FRI',venue:'Wild Hare',city:'Oregon City, OR',time:'9–10:30 PM',age:'All Ages'},
+  {id:'show-10',month:'JUL',day:'25',dow:'FRI',venue:'A Beer at a Time',city:'Camas, WA',time:'7–10 PM',age:'All Ages'},
+  {id:'show-11',month:'AUG',day:'1',dow:'FRI',venue:'Fallsview Tavern',city:'Oregon City, OR',time:'6–10 PM',age:'All Ages'},
+  {id:'show-12',month:'AUG',day:'7',dow:'THU',venue:'Headliners (w/ Vikings in the Basement)',city:'Lake Oswego, OR',time:'8–11 PM',age:'All Ages'},
+  {id:'show-13',month:'AUG',day:'14',dow:'THU',venue:"Ria's",city:'Sandy, OR',time:'8–11 PM',age:'All Ages'},
+  {id:'show-14',month:'AUG',day:'15',dow:'FRI',venue:'Private Event',city:'Vancouver, WA',time:'',age:'Private'},
+  {id:'show-15',month:'SEP',day:'12',dow:'FRI',venue:'A Beer at a Time',city:'Camas, WA',time:'7–10 PM',age:'All Ages'},
+  {id:'show-16',month:'SEP',day:'19',dow:'FRI',venue:'Corner 14',city:'Oregon City, OR',time:'7–10 PM',age:'All Ages'}
+];
+const SONGS={
+  rock:["Shine – Collective Soul","Everlong – Foo Fighters","Gold on the Ceiling – The Black Keys","Sultans of Swing – Dire Straits","Runnin' Down a Dream – Tom Petty","3AM – Matchbox Twenty","Higher – Creed","Sex on Fire – Kings of Leon","Plush – Stone Temple Pilots","Vasoline – Stone Temple Pilots","Show Me How to Live – Audioslave","Interstate Love Song – Stone Temple Pilots","Heart-Shaped Box – Nirvana","American Woman – Lenny Kravitz","Mr. Brightside – The Killers","Hard to Handle – The Black Crowes","Slide – Goo Goo Dolls","The One I Love – R.E.M.","Burning Down the House – Paramore","Pretty Fly (For a White Guy) – The Offspring","Crazy on You – Heart","Learn to Fly – Foo Fighters","Rock and Roll – Led Zeppelin"],
+  country:["Tennessee Whiskey – Chris Stapleton","White Horse – Chris Stapleton","Drinkin' Alone – Ty Myers","The Thunder Rolls – Garth Brooks","Neon Moon – Brooks & Dunn","Neon Moon (with Morgan Wallen) – Brooks & Dunn","Boot Scootin' Boogie – Brooks & Dunn","Folsom Prison Blues – Johnny Cash","Save a Horse (Ride a Cowboy) – Big & Rich","Free Fallin' – Tom Petty","Black Magic Woman – Santana"],
+  crowd:["Long Train Runnin' – The Doobie Brothers","Listen to the Music – The Doobie Brothers","Love Shack – The B-52's","Hysteria – Def Leppard","Purple Rain – Prince","The Best – Tina Turner","Superstition – Stevie Wonder","867-5309/Jenny – Tommy Tutone","Blue on Black – Five Finger Death Punch","Run to You – Bryan Adams","Midnight Rendezvous – The Babys"],
+  slow:["Iris – Goo Goo Dolls","Dreams – Fleetwood Mac","Wicked Game – Chris Isaak","Stop Draggin' My Heart Around – Stevie Nicks & Tom Petty","Think I'm in Love With You – Chris Stapleton","Valerie – Mark Ronson ft. Amy Winehouse","Into the Mystic – Van Morrison","While My Guitar Gently Weeps – Tom Petty / Jeff Lynne","Turn the Page – Metallica"]
+};
+
+function init(){buildStars();buildMarquee();buildHomeShows();buildShowsList();buildRequestDropdowns()}
+
+function buildStars(){
+  const c=document.getElementById('stars-canvas');if(!c)return;
+  const ctx=c.getContext('2d');c.width=window.innerWidth;c.height=window.innerHeight;
+  const stars=Array.from({length:100},()=>(({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.2+0.2,op:Math.random()*0.4+0.1,speed:Math.random()*0.1+0.02,phase:Math.random()*Math.PI*2})));
+  let t=0;
+  function draw(){ctx.clearRect(0,0,c.width,c.height);t+=0.008;stars.forEach(s=>{const o=s.op*(0.6+0.4*Math.sin(t+s.phase));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${o})`;ctx.fill();s.y+=s.speed*0.3;if(s.y>c.height)s.y=0});requestAnimationFrame(draw)}
+  draw();window.addEventListener('resize',()=>{c.width=window.innerWidth;c.height=window.innerHeight});
+}
+
+function buildMarquee(){
+  const shows=[
+    {month:'JUN',day:'10',venue:'Ponderosa',city:'Portland, OR'},
+    {month:'JUN',day:'20',venue:'M&M',city:'Gresham, OR'},
+    {month:'JUN',day:'27',venue:'Corner 14',city:'Oregon City, OR'},
+    {month:'JUL',day:'10',venue:"Mountain Days (Ria's)",city:'Sandy, OR'},
+    {month:'JUL',day:'11',venue:'Music Fair and Feast',city:'Sandy, OR'},
+    {month:'JUL',day:'17',venue:'Billy Blues',city:'Vancouver, WA'},
+    {month:'JUL',day:'18',venue:'Wild Hare',city:'Oregon City, OR'},
+    {month:'JUL',day:'25',venue:'A Beer at a Time',city:'Camas, WA'},
+    {month:'AUG',day:'1',venue:'Fallsview Tavern',city:'Oregon City, OR'},
+    {month:'AUG',day:'7',venue:'Headliners',city:'Lake Oswego, OR'},
+    {month:'AUG',day:'14',venue:"Ria's",city:'Sandy, OR'},
+    {month:'SEP',day:'12',venue:'A Beer at a Time',city:'Camas, WA'},
+    {month:'SEP',day:'19',venue:'Corner 14',city:'Oregon City, OR'},
+  ];
+  const t=document.getElementById('marquee-track');if(!t)return;
+  t.innerHTML=[...shows,...shows].map(s=>`<span class="marquee-item"><strong>${s.month} ${s.day}</strong> — ${s.venue}, ${s.city}<span class="marquee-dot">✦</span></span>`).join('');
+}
+
+function buildHomeShows(){
+  const el=document.getElementById('home-shows');if(!el)return;
+  const upcoming=SHOWS.filter(s=>s.age!=='Private').slice(0,3);
+  el.innerHTML=upcoming.map(s=>`<div class="show-card-mini"><div class="show-date-badge">${s.month} ${s.day} · ${s.dow}</div><div class="show-venue-name">${s.venue}</div><div class="show-meta-line">${s.city}${s.time?' · '+s.time:''}</div><button class="btn btn-red btn-sm" onclick="requestForShow('${s.id}')">Request a Song →</button></div>`).join('');
+}
+
+function buildShowsList(){
+  const el=document.getElementById('shows-list');if(!el)return;
+  el.innerHTML=SHOWS.map(s=>`<div class="show-item"><div class="show-item-date"><div class="show-item-month">${s.month}</div><div class="show-item-day">${s.day}</div><div class="show-item-dow">${s.dow}</div></div><div><div class="show-item-venue">${s.venue}</div><div class="show-item-details"><span>📍 ${s.city}</span>${s.time?`<span>🕐 ${s.time}</span>`:''}</div></div><div class="show-item-actions">${s.age!=='Private'?`<button class="btn btn-red btn-sm" onclick="requestForShow('${s.id}')">Request a Song</button>`:'<span class="badge">Private Event</span>'}</div></div>`).join('');
+}
+
+function buildRequestDropdowns(){
+  const showSel=document.getElementById('req-show');
+  if(showSel)SHOWS.filter(s=>s.age!=='Private').forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=`${s.month} ${s.day} — ${s.venue}, ${s.city}`;showSel.appendChild(o)});
+  const map={rock:'cat-rock',country:'cat-country',crowd:'cat-crowd',slow:'cat-slow'};
+  Object.entries(map).forEach(([k,id])=>{const g=document.getElementById(id);if(g)SONGS[k].forEach(song=>{const o=document.createElement('option');o.value=o.textContent=song;g.appendChild(o)})});
+}
+
+function requestForShow(id){showPage('request');setTimeout(()=>{const s=document.getElementById('req-show');if(s)s.value=id},60)}
+
+function showPage(page){
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  const sec=document.getElementById(page);if(sec)sec.classList.add('active');
+  const lnk=document.getElementById('nav-'+page);if(lnk)lnk.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});closeMobile();
+}
+
+function toggleMobile(){document.getElementById('mobile-nav').classList.toggle('open')}
+function closeMobile(){document.getElementById('mobile-nav').classList.remove('open')}
+
+function submitRequest(){
+  const show=document.getElementById('req-show').value,song=document.getElementById('req-song').value,name=document.getElementById('req-name').value.trim(),email=document.getElementById('req-email').value.trim();
+  if(!show||!song||!name||!email){alert('Please fill in all required fields.');return}
+  const stripeUrl='https://buy.stripe.com/28E3co8QZ8tpfXd0saaZi01?prefilled_email='+encodeURIComponent(email)+'&client_reference_id='+encodeURIComponent(song.substring(0,50).replace(/[^a-zA-Z0-9]/g,'_'));
+  window.location.href=stripeUrl;
+}
+function resetRequest(){document.getElementById('request-form-container').style.display='block';document.getElementById('request-success').classList.remove('visible');['req-show','req-song','req-name','req-email','req-message'].forEach(id=>document.getElementById(id).value='')}
+function submitBooking(){
+  const name=document.getElementById('bk-name').value.trim(),email=document.getElementById('bk-email').value.trim(),venue=document.getElementById('bk-venue').value.trim(),type=document.getElementById('bk-type').value;
+  if(!name||!email||!venue||!type){alert('Please fill in the required fields.');return}
+  document.getElementById('book-form-container').style.display='none';document.getElementById('book-success').classList.add('visible');
+}
+function resetBooking(){document.getElementById('book-form-container').style.display='block';document.getElementById('book-success').classList.remove('visible')}
+function submitContact(){
+  const name=document.getElementById('ct-name').value.trim(),email=document.getElementById('ct-email').value.trim(),msg=document.getElementById('ct-message').value.trim();
+  if(!name||!email||!msg){alert('Please fill in your name, email, and message.');return}
+  document.getElementById('contact-form-container').style.display='none';document.getElementById('contact-success').classList.add('visible');
+}
+function resetContact(){document.getElementById('contact-form-container').style.display='block';document.getElementById('contact-success').classList.remove('visible')}
+document.addEventListener('DOMContentLoaded',init);
+</script>
+</body>
+</html>
