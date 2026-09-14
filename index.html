@@ -528,6 +528,14 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:56px 0 0
 <section id="request">
   <div class="page"><div class="container">
     <div class="section-hero"><div class="section-label">Fan Requests</div><h1>Request a Song</h1><p>Pick a song from our live catalog and we'll do our best to work it into the show.</p></div>
+    <div style="margin-bottom:48px">
+      <div class="section-label" style="margin-bottom:8px">The Live Catalog</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px;max-width:640px">Every song we play, straight from our Spotify playlist. Give it a listen, find the one, then request it below.</p>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:20px">
+        <iframe data-testid="embed-iframe" style="border-radius:12px;display:block" src="https://open.spotify.com/embed/playlist/6uEe6NILhnpbPJUgf9mR85?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Ira and the Half Moon live catalog on Spotify"></iframe>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;font-style:italic">This list updates itself as we add songs on Spotify.</p>
+    </div>
     <div class="request-layout">
       <div>
         <div id="request-form-container">
@@ -847,7 +855,7 @@ const SONGS={
   rock:["Shine – Collective Soul","Everlong – Foo Fighters","Gold on the Ceiling – The Black Keys","Sultans of Swing – Dire Straits","Runnin' Down a Dream – Tom Petty","3AM – Matchbox Twenty","Higher – Creed","Sex on Fire – Kings of Leon","Plush – Stone Temple Pilots","Vasoline – Stone Temple Pilots","Show Me How to Live – Audioslave","Interstate Love Song – Stone Temple Pilots","Heart-Shaped Box – Nirvana","American Woman – Lenny Kravitz","Mr. Brightside – The Killers","Hard to Handle – The Black Crowes","Slide – Goo Goo Dolls","The One I Love – R.E.M.","Burning Down the House – Paramore","Pretty Fly (For a White Guy) – The Offspring","Learn to Fly – Foo Fighters","Rock and Roll – Led Zeppelin","Sweet Child o' Mine – Guns N' Roses","Sweet Home Alabama – Lynyrd Skynyrd","I Won't Back Down – Tom Petty"],
   country:["Tennessee Whiskey – Chris Stapleton","White Horse – Chris Stapleton","Drinkin' Alone – Ty Myers","The Thunder Rolls – Garth Brooks","Neon Moon – Brooks & Dunn","Boot Scootin' Boogie – Brooks & Dunn","Folsom Prison Blues – Johnny Cash","Save a Horse (Ride a Cowboy) – Big & Rich","Free Fallin' – Tom Petty","Black Magic Woman – Santana"],
   crowd:["Long Train Runnin' – The Doobie Brothers","Listen to the Music – The Doobie Brothers","Love Shack – The B-52's","Hysteria – Def Leppard","Purple Rain – Prince","The Best – Tina Turner","Superstition – Stevie Wonder","867-5309/Jenny – Tommy Tutone","Blue on Black – Five Finger Death Punch","Run to You – Bryan Adams","Midnight Rendezvous – The Babys","(Sittin' On) The Dock of the Bay – Otis Redding"],
-  slow:["Iris – Goo Goo Dolls","Dreams – Fleetwood Mac","Wicked Game – Chris Isaak","Stop Draggin' My Heart Around – Stevie Nicks & Tom Petty","Think I'm in Love With You – Chris Stapleton","Valerie – Mark Ronson ft. Amy Winehouse","Into the Mystic – Van Morrison","While My Guitar Gently Weeps – Tom Petty / Jeff Lynne","Turn the Page – Metallica"]
+  slow:["Iris – Goo Goo Dolls","Dreams – Fleetwood Mac","Wicked Game – Chris Isaak","Stop Draggin' My Heart Around – Stevie Nicks & Tom Petty","Think I'm in Love With You – Chris Stapleton","Valerie – Mark Ronson ft. Amy Winehouse","Into the Mystic – Van Morrison","While My Guitar Gently Weeps – Tom Petty / Jeff Lynne","Turn the Page – Metallica","Gypsy – Fleetwood Mac"]
 };
 
 function init(){buildStars();buildMarquee();buildNextShow();buildHomeShows();buildShowsList();buildRequestDropdowns();loadCalendar();}
