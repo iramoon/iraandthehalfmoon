@@ -942,7 +942,7 @@ function buildShowsList(){
 function buildRequestDropdowns(){
   const showSel=document.getElementById('req-show');
   if(showSel)showSel.innerHTML='<option value="">Select an upcoming show…</option>';
-  if(showSel)SHOWS.filter(canRequest).forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=`${s.month} ${s.day} — ${shortVenue(s.venue)}, ${s.city}`;showSel.appendChild(o)});
+  if(showSel)SHOWS.filter(canRequest).sort(byDate).forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=`${s.month} ${s.day} — ${shortVenue(s.venue)}, ${s.city}`;showSel.appendChild(o)});
   const map={rock:'cat-rock',country:'cat-country',crowd:'cat-crowd',slow:'cat-slow'};
   Object.entries(map).forEach(([k,id])=>{const g=document.getElementById(id);if(g)g.innerHTML='';if(g)SONGS[k].forEach(song=>{const o=document.createElement('option');o.value=o.textContent=song;g.appendChild(o)})});
 }
@@ -969,7 +969,7 @@ function submitRequest(){
   const stripeUrl='https://buy.stripe.com/28E3co8QZ8tpfXd0saaZi01?prefilled_email='+encodeURIComponent(email)+'&client_reference_id='+encodeURIComponent(song.substring(0,50).replace(/[^a-zA-Z0-9]/g,'_'));
   var went=false;function go(){if(went)return;went=true;window.location.href=stripeUrl;}
   if(keySet()){
-    fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'New Song Request — '+song,from_name:name,email:email,'Song':song,'At show':showLabel,'Message':message,'Status':'Sent to Stripe for payment'})}).then(go,go);
+    fetch('https://api.web3forms.com/submit',{method:'POST',keepalive:true,headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'New Song Request — '+song,from_name:name,email:email,'Song':song,'At show':showLabel,'Message':message,'Status':'Sent to Stripe for payment'})}).then(go,go);
     setTimeout(go,1500);
   }else{go();}
 }
